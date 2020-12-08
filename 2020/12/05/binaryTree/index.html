@@ -20,18 +20,20 @@
     var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="前序遍历 递归 Java Python3   迭代 Java Python3   Morris 遍历      前序遍历根左右可以通过递归与循环实现。 递归递归体内是问题的最简处理形式，节点按照根左右的按顺序入 list，递归退出条件是节点为空。同时需要在递归体外定义一个作用域更高的变量 result 来记录入 list 的顺序，最后 list 的状态就是前序遍历的结果。中序遍历，后序遍历与">
+  <meta name="description" content="前序遍历 递归 Java Python3   迭代 Java Python3   Morris 遍历 Java Python3     中序遍历">
 <meta property="og:type" content="article">
 <meta property="og:title" content="二叉树复习（WIP）">
 <meta property="og:url" content="http://yoursite.com/2020/12/05/binaryTree/index.html">
 <meta property="og:site_name" content="和邪涉秽">
-<meta property="og:description" content="前序遍历 递归 Java Python3   迭代 Java Python3   Morris 遍历      前序遍历根左右可以通过递归与循环实现。 递归递归体内是问题的最简处理形式，节点按照根左右的按顺序入 list，递归退出条件是节点为空。同时需要在递归体外定义一个作用域更高的变量 result 来记录入 list 的顺序，最后 list 的状态就是前序遍历的结果。中序遍历，后序遍历与">
+<meta property="og:description" content="前序遍历 递归 Java Python3   迭代 Java Python3   Morris 遍历 Java Python3     中序遍历">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://s3.ax1x.com/2020/12/08/r9Cd4H.png">
 <meta property="article:published_time" content="2020-12-05T09:12:02.000Z">
-<meta property="article:modified_time" content="2020-12-06T17:08:37.184Z">
+<meta property="article:modified_time" content="2020-12-08T16:20:32.197Z">
 <meta property="article:author" content="SilverBell">
 <meta property="article:tag" content="算法">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s3.ax1x.com/2020/12/08/r9Cd4H.png">
 
 <link rel="canonical" href="http://yoursite.com/2020/12/05/binaryTree/">
 
@@ -218,7 +220,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-12-07 01:08:37" itemprop="dateModified" datetime="2020-12-07T01:08:37+08:00">2020-12-07</time>
+                <time title="修改时间：2020-12-09 00:20:32" itemprop="dateModified" datetime="2020-12-09T00:20:32+08:00">2020-12-09</time>
               </span>
 
           <br>
@@ -227,14 +229,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>2.6k</span>
+              <span>4.9k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>2 分钟</span>
+              <span>4 分钟</span>
             </span>
 
         </div>
@@ -260,16 +262,20 @@
 <li><a href="#python3-1">Python3</a></li>
 </ul>
 </li>
-<li><a href="#morris-遍历">Morris 遍历</a></li>
+<li><a href="#morris-遍历">Morris 遍历</a><ul>
+<li><a href="#java-2">Java</a></li>
+<li><a href="#python3-2">Python3</a></li>
 </ul>
 </li>
 </ul>
+</li>
+<li><a href="#中序遍历">中序遍历</a></li>
+</ul>
 <!-- tocstop -->
 
-<h2><span id="前序遍历">前序遍历</span></h2><p>根左右<br>可以通过递归与循环实现。</p>
-<h3><span id="递归">递归</span></h3><p>递归体内是问题的最简处理形式，节点按照根左右的按顺序入 list，递归退出条件是节点为空。同时需要在递归体外定义一个作用域更高的变量 result 来记录入 list 的顺序，最后 list 的状态就是前序遍历的结果。中序遍历，后序遍历与这个方法都在框上是相同的。</p>
 <a id="more"></a>
-<p>时间复杂度：O(n), 其中 n 是二叉树的节点数，每个节点被访问一次。<br>空间复杂度：平均 O(logN), 最坏情况为 O(n) (树完全为链状)</p>
+<h2><span id="前序遍历">前序遍历</span></h2><p>根左右<br>可以通过递归与循环实现。</p>
+<h3><span id="递归">递归</span></h3><p>递归体内是问题的最简处理形式，节点按照根左右的按顺序入 list，递归退出条件是节点为空。同时需要在递归体外定义一个作用域更高的变量 result 来记录入 list 的顺序，最后 list 的状态就是前序遍历的结果。中序遍历，后序遍历与这个方法都在框架上是相同的。<br>时间复杂度：O(n), 其中 n 是二叉树的节点数，每个节点被访问一次。<br>空间复杂度：平均 O(logN), 最坏情况为 O(n) (树完全为链状)</p>
 <h4><span id="java">Java</span></h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * public class TreeNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     TreeNode left;</span></span><br><span class="line"><span class="comment"> *     TreeNode right;</span></span><br><span class="line"><span class="comment"> *     TreeNode() &#123;&#125;</span></span><br><span class="line"><span class="comment"> *     TreeNode(int val) &#123; this.val = val; &#125;</span></span><br><span class="line"><span class="comment"> *     TreeNode(int val, TreeNode left, TreeNode right) &#123;</span></span><br><span class="line"><span class="comment"> *         this.val = val;</span></span><br><span class="line"><span class="comment"> *         this.left = left;</span></span><br><span class="line"><span class="comment"> *         this.right = right;</span></span><br><span class="line"><span class="comment"> *     &#125;</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> List&lt;Integer&gt; <span class="title">preorderTraversal</span><span class="params">(TreeNode root)</span> </span>&#123;</span><br><span class="line">        List&lt;Integer&gt; result = <span class="keyword">new</span> ArrayList&lt;Integer&gt;();</span><br><span class="line">        preorder(root, result);</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">preorder</span><span class="params">(TreeNode root, List&lt;Integer&gt; result)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (root == <span class="keyword">null</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        result.add(root.val);</span><br><span class="line">        preorder(root.left, result);</span><br><span class="line">        preorder(root.right, result);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h4><span id="python3">Python3</span></h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"># class TreeNode:</span></span><br><span class="line"><span class="comment">#     def __init__(self, val=0, left=None, right=None):</span></span><br><span class="line"><span class="comment">#         self.val = val</span></span><br><span class="line"><span class="comment">#         self.left = left</span></span><br><span class="line"><span class="comment">#         self.right = right</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    result = []</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">preorderTraversal</span><span class="params">(self, root: TreeNode)</span> -&gt; List[int]:</span></span><br><span class="line">        <span class="function"><span class="keyword">def</span> <span class="title">preorder</span><span class="params">(root: TreeNode)</span>:</span></span><br><span class="line">            <span class="keyword">if</span> root <span class="keyword">is</span> <span class="literal">None</span>:</span><br><span class="line">                <span class="keyword">return</span></span><br><span class="line">            result.append(root.val)</span><br><span class="line">            preorder(root.left)</span><br><span class="line">            preorder(root.right)</span><br><span class="line">        result = list()</span><br><span class="line">        preorder(root)</span><br><span class="line">        <span class="keyword">return</span> result</span><br></pre></td></tr></table></figure>
 
@@ -278,7 +284,40 @@
 
 <h4><span id="python3">Python3</span></h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"># class TreeNode:</span></span><br><span class="line"><span class="comment">#     def __init__(self, val=0, left=None, right=None):</span></span><br><span class="line"><span class="comment">#         self.val = val</span></span><br><span class="line"><span class="comment">#         self.left = left</span></span><br><span class="line"><span class="comment">#         self.right = right</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">preorderTraversal</span><span class="params">(self, root: TreeNode)</span> -&gt; List[int]:</span></span><br><span class="line">        result = list()</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> root:</span><br><span class="line">            <span class="keyword">return</span> result</span><br><span class="line"></span><br><span class="line">        stack = list()</span><br><span class="line">        node = root</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> stack <span class="keyword">or</span> node:</span><br><span class="line">            <span class="keyword">while</span> node:</span><br><span class="line">                result.append(node.val)</span><br><span class="line">                stack.append(node)</span><br><span class="line">                node = node.left</span><br><span class="line">            node = stack.pop()</span><br><span class="line">            node = node.right</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> result</span><br></pre></td></tr></table></figure>
 
-<h3><span id="morris-遍历">Morris 遍历</span></h3>
+<h3><span id="morris-遍历">Morris 遍历</span></h3><p>思路与算法</p>
+<blockquote>
+<p>有一种巧妙的方法可以在线性时间内，只占用常数空间来实现前序遍历。这种方法由 J. H. Morris 在 1979 年的论文「Traversing Binary Trees Simply and Cheaply」中首次提出，因此被称为 Morris 遍历。</p>
+</blockquote>
+<blockquote>
+<p>Morris 遍历的核心思想是利用树的大量空闲指针，实现空间开销的极限缩减。其前序遍历规则总结如下：</p>
+</blockquote>
+<ol>
+<li><p>新建临时节点，令该节点为 root；</p>
+</li>
+<li><p>如果当前节点的左子节点为空，将当前节点加入答案，并遍历当前节点的右子节点；</p>
+</li>
+<li><p>如果当前节点的左子节点不为空，在当前节点的左子树中找到当前节点在中序遍历下的前驱节点：</p>
+</li>
+<li><p>如果前驱节点的右子节点为空，将前驱节点的右子节点设置为当前节点。然后将当前节点加入答案，并将前驱节点的右子节点更新为当前节点。当前节点更新为当前节点的左子节点。</p>
+</li>
+<li><p>如果前驱节点的右子节点为当前节点，将它的右子节点重新设为空。当前节点更新为当前节点的右子节点。</p>
+</li>
+<li><p>重复步骤 2 和步骤 3，直到遍历结束。</p>
+</li>
+</ol>
+<p>例如：<br><a href="https://imgchr.com/i/r9Cd4H" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2020/12/08/r9Cd4H.png" alt="r9Cd4H.png"></a></p>
+<ul>
+<li>将根节点1设置为cur。</li>
+<li>因为cur（节点1）不为空，且cur（节点1）的左孩子节点2不为空，所以我们找到以节点2为根节点的左子树中最右端的节点5。</li>
+<li>节点5右孩子为空，此时我们输出cur（节点1）的值，然后将节点5右孩子指向为cur，即节点1。更新* cur节点为cur左孩子，即节点2。<br>因为cur（节点2）左孩子不为空，找到其左子树最右端节点4</li>
+<li>节点4右孩子为空，先输出cur（节点2）的值，再将节点4右孩子指向cur（节点2）,并更新cur（节点2）为其左孩子节点4。<br>这个时候cur（节点4）的左孩子为空，所以访问其右孩子，发现右孩子指向了节点2，所以我们将cur更新为节点2。</li>
+<li>这个时候我们发现cur又指向了节点2，所以左孩子节点4不为空，我们再次找到左子树中最右端节点4，但是这个时候节点4的右孩子指向了cur，所以我们将其删除，即节点4右孩子指向为空，恢复原来的树结构。并且由于已经访问了左孩子和根节点，所以这个时候我们访问其右孩子节点5。</li>
+</ul>
+<h4><span id="java">Java</span></h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * public class TreeNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     TreeNode left;</span></span><br><span class="line"><span class="comment"> *     TreeNode right;</span></span><br><span class="line"><span class="comment"> *     TreeNode() &#123;&#125;</span></span><br><span class="line"><span class="comment"> *     TreeNode(int val) &#123; this.val = val; &#125;</span></span><br><span class="line"><span class="comment"> *     TreeNode(int val, TreeNode left, TreeNode right) &#123;</span></span><br><span class="line"><span class="comment"> *         this.val = val;</span></span><br><span class="line"><span class="comment"> *         this.left = left;</span></span><br><span class="line"><span class="comment"> *         this.right = right;</span></span><br><span class="line"><span class="comment"> *     &#125;</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> List&lt;Integer&gt; <span class="title">preorderTraversal</span><span class="params">(TreeNode root)</span> </span>&#123;</span><br><span class="line">        List&lt;Integer&gt; result = <span class="keyword">new</span> ArrayList&lt;Integer&gt;();</span><br><span class="line">        <span class="keyword">if</span> (root == <span class="keyword">null</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> result;</span><br><span class="line">        &#125;</span><br><span class="line">        TreeNode p1 = root;</span><br><span class="line">        <span class="keyword">while</span>(p1!=<span class="keyword">null</span>)&#123;</span><br><span class="line">            TreeNode p2 = p1.left;</span><br><span class="line">            <span class="keyword">if</span> (p2!=<span class="keyword">null</span>)&#123;</span><br><span class="line">                <span class="keyword">while</span> (p2.right!=<span class="keyword">null</span> &amp;&amp; p2.right!=p1)&#123;</span><br><span class="line">                    p2 = p2.right;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span> (p2.right==<span class="keyword">null</span>)&#123;</span><br><span class="line">                    result.add(p1.val);</span><br><span class="line">                    p2.right = p1;</span><br><span class="line">                    p1 = p1.left;</span><br><span class="line">                    <span class="keyword">continue</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">else</span>&#123;</span><br><span class="line">                    p2.right = <span class="keyword">null</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span>&#123;</span><br><span class="line">                result.add(p1.val);</span><br><span class="line">            &#125;</span><br><span class="line">            p1 = p1.right;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4><span id="python3">Python3</span></h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"># class TreeNode:</span></span><br><span class="line"><span class="comment">#     def __init__(self, val=0, left=None, right=None):</span></span><br><span class="line"><span class="comment">#         self.val = val</span></span><br><span class="line"><span class="comment">#         self.left = left</span></span><br><span class="line"><span class="comment">#         self.right = right</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">preorderTraversal</span><span class="params">(self, root: TreeNode)</span> -&gt; List[int]:</span></span><br><span class="line">        result = list()</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> root:</span><br><span class="line">            <span class="keyword">return</span> result</span><br><span class="line">        p1 = root</span><br><span class="line">        <span class="keyword">while</span> p1:</span><br><span class="line">            p2 = p1.left</span><br><span class="line">            <span class="comment"># 如果当前节点的有左孩子就进入该流程</span></span><br><span class="line">            <span class="keyword">if</span> p2:</span><br><span class="line">                <span class="comment"># 找到当前节点左子树的最右节点，将最右节点的右孩子指向当前节点</span></span><br><span class="line">                <span class="keyword">while</span> p2.right <span class="keyword">and</span> p2.right!=p1:</span><br><span class="line">                    p2 = p2.right</span><br><span class="line">                <span class="keyword">if</span> <span class="keyword">not</span> p2.right:</span><br><span class="line">                    result.append(p1.val)</span><br><span class="line">                    p2.right = p1</span><br><span class="line">                    p1 = p1.left</span><br><span class="line">                    <span class="keyword">continue</span></span><br><span class="line">                <span class="comment"># 如果当前节点左子树的最右节点是当前节点本身，要消环</span></span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    p2.right=<span class="literal">None</span></span><br><span class="line">            <span class="comment"># 如果当前节点没有左孩子，将当前节点加入答案，然后将当前节点移动到右孩子</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                result.append(p1.val)</span><br><span class="line">            p1 = p1.right</span><br><span class="line">        <span class="keyword">return</span> result</span><br></pre></td></tr></table></figure>
+
+<h2><span id="中序遍历">中序遍历</span></h2>
     </div>
 
     
@@ -296,7 +335,7 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2020/05/14/hello-world/" rel="prev" title="Hello World">
+    <a href="/2020/05/07/hello-world/" rel="prev" title="Hello World">
       <i class="fa fa-chevron-left"></i> Hello World
     </a></div>
       <div class="post-nav-item"></div>
@@ -358,7 +397,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#"><span class="nav-number">1.</span> <span class="nav-text">前序遍历</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#"><span class="nav-number">1.1.</span> <span class="nav-text">递归</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#"><span class="nav-number">1.1.1.</span> <span class="nav-text">Java</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#"><span class="nav-number">1.1.2.</span> <span class="nav-text">Python3</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#"><span class="nav-number">1.2.</span> <span class="nav-text">迭代</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#"><span class="nav-number">1.2.1.</span> <span class="nav-text">Java</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#"><span class="nav-number">1.2.2.</span> <span class="nav-text">Python3</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#"><span class="nav-number">1.3.</span> <span class="nav-text">Morris 遍历</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#"><span class="nav-number">1.</span> <span class="nav-text">前序遍历</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#"><span class="nav-number">1.1.</span> <span class="nav-text">递归</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#"><span class="nav-number">1.1.1.</span> <span class="nav-text">Java</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#"><span class="nav-number">1.1.2.</span> <span class="nav-text">Python3</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#"><span class="nav-number">1.2.</span> <span class="nav-text">迭代</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#"><span class="nav-number">1.2.1.</span> <span class="nav-text">Java</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#"><span class="nav-number">1.2.2.</span> <span class="nav-text">Python3</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#"><span class="nav-number">1.3.</span> <span class="nav-text">Morris 遍历</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#"><span class="nav-number">1.3.1.</span> <span class="nav-text">Java</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#"><span class="nav-number">1.3.2.</span> <span class="nav-text">Python3</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#"><span class="nav-number">2.</span> <span class="nav-text">中序遍历</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -379,7 +418,7 @@
         </a>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-count">2</span>
         <span class="site-state-item-name">标签</span>
       </div>
   </nav>
@@ -420,12 +459,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">3k</span>
+    <span title="站点总字数">5k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">3 分钟</span>
+    <span title="站点阅读时长">5 分钟</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
   </div>
